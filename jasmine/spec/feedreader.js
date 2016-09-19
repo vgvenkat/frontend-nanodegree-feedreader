@@ -90,9 +90,7 @@ describe("The menu", function() {
          */
 
          it("hidden by default", function(){
-             var slidemenu = document.querySelector('.menu-hidden .slide-menu');
-             console.log(slidemenu);
-             expect(slidemenu.style.transform).toBe("translate3d(-12em, 0, 0)");
+             expect(document.body.classList).toContain('menu-hidden');
          })
 
          /* TODO: Write a test that ensures the menu changes
@@ -105,8 +103,14 @@ describe("The menu", function() {
         //
         //   })
           it(" is displayed when clicked and hides when clicked again", function(){
-              expect();
-              expect();
+              if(!document.body.classList.contains('menu-hidden')){
+                  document.querySelector('.menu-icon-link').click();
+              }
+               document.querySelector('.menu-icon-link').click();
+               expect(document.body.classList).not.toContain('menu-hidden');
+               
+               document.querySelector('.menu-icon-link').click();
+               expect(document.body.classList).toContain('menu-hidden');
             });
 });
 
@@ -117,7 +121,7 @@ describe("The menu", function() {
 
     /* TODO: Write a new test suite named "Initial Entries" */
 
-describe("Initial Entries", function(){
+        describe("Initial Entries", function(){
 
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
