@@ -1,0 +1,26 @@
+{
+  "name": "frontend-nanodegree-feedreader",
+  "version": "1.0.0",
+  "description": "testing project for udacity",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vgvenkat/frontend-nanodegree-feedreader.git"
+  },
+  "author": "Venkat Ganesan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vgvenkat/frontend-nanodegree-feedreader/issues"
+  },
+  "homepage": "https://github.com/vgvenkat/frontend-nanodegree-feedreader#readme",
+  "devDependencies": {
+    "eslint": "^3.5.0",
+    "eslint-config-airbnb": "^11.1.0",
+    "eslint-plugin-import": "^1.15.0",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.2.2"
+  }
+}
