@@ -136,7 +136,8 @@ describe("The menu", function() {
            });
            it("are present in feed container", function(){
 
-             var container = document.querySelector('.feed');
+             var container = document.querySelectorAll('.feed .entry-link');
+             expect(container.length).toBeGreaterThan(0);
 
         });
 });
@@ -149,18 +150,23 @@ describe("The menu", function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-
-        it("is loaded by loadFeed function", function(){
-
-        });
-   
-
+        var title = '', url = '';
          beforeEach(function(done){
-           loadFeed(0, done);
+           loadFeed(0, function(){
+                title = document.querySelector('.entry-link .entry h2').innerHTML;
+                url = document.querySelector('.feed .entry-link').getAttribute('href'); 
+           });
+           loadFeed(1,done);
          })
             it("should change content", function(){
-              
+              var new_title = document.querySelector('.entry-link .entry h2').innerHTML;
+               var new_url = document.querySelector('.feed .entry-link').getAttribute('href');
+               expect(title).not.toEqual(new_title);
+               expect(url).not.toEqual(new_url);
             });
+        afterEach(function(done) {
+            loadFeed(0,done);
+        });
          });
 
 }());
