@@ -39,16 +39,11 @@ $(function() {
 
              function checkUrl(feedItem) {
                  expect(feedItem.url).toBeDefined();
-                 expect(feedItem.url.length).toBeGreaterThan(1);
+                 expect(feedItem.url.length).toBeGreaterThan(0);
              }
          });
 
-         for(var feed in allFeeds){
-           it("has URL defined and not empty for"+JSON.stringify(allFeeds[feed].name), function(){
-             expect(allFeeds[feed].url).toBeDefined();
-             expect(allFeeds[feed].url.length).not.toBe(0);
-           });
-         }
+          
 
 
 
@@ -65,16 +60,10 @@ $(function() {
 
              function checkUrl(feedItem) {
                  expect(feedItem.name).toBeDefined();
-                 expect(feedItem.name.length).toBeGreaterThan(1);
+                 expect(feedItem.name.length).toBeGreaterThan(0);
              }
          });
 
-         for(var feed in allFeeds){
-             it("has name defined and not empty for"+JSON.stringify(allFeeds[feed].name), function(){
-               expect(allFeeds[feed].name).toBeDefined();
-               expect(allFeeds[feed].name.length).not.toBe(0);
-             });
-          }
 
     });
 
@@ -103,13 +92,13 @@ describe("The menu", function() {
         //
         //   })
           it(" is displayed when clicked and hides when clicked again", function(){
-              if(!document.body.classList.contains('menu-hidden')){
-                  document.querySelector('.menu-icon-link').click();
+              if(!$('body').hasClass('menu-hidden')){
+                  $('.menu-icon-link').click();
               }
-               document.querySelector('.menu-icon-link').click();
+               $('.menu-icon-link').click();
                expect(document.body.classList).not.toContain('menu-hidden');
                
-               document.querySelector('.menu-icon-link').click();
+               $('.menu-icon-link').click();
                expect(document.body.classList).toContain('menu-hidden');
             });
 });
@@ -136,7 +125,7 @@ describe("The menu", function() {
            });
            it("are present in feed container", function(){
 
-             var container = document.querySelectorAll('.feed .entry-link');
+             var container = $('.feed .entry-link');
              expect(container.length).toBeGreaterThan(0);
 
         });
@@ -153,18 +142,19 @@ describe("The menu", function() {
         var title = '', url = '';
          beforeEach(function(done){
            loadFeed(0, function(){
-                title = document.querySelector('.entry-link .entry h2').innerHTML;
-                url = document.querySelector('.feed .entry-link').getAttribute('href'); 
+                title = $('.entry-link .entry h2').text();
+                url = $('.feed .entry-link').attr('href'); 
+                loadFeed(1,done);
            });
-           loadFeed(1,done);
+           
          })
             it("should change content", function(){
-              var new_title = document.querySelector('.entry-link .entry h2').innerHTML;
-               var new_url = document.querySelector('.feed .entry-link').getAttribute('href');
+              var new_title = $('.entry-link .entry h2').text();
+               var new_url = $('.feed .entry-link').attr('href');
                expect(title).not.toEqual(new_title);
                expect(url).not.toEqual(new_url);
             });
-        afterEach(function(done) {
+        afterAll(function(done) {
             loadFeed(0,done);
         });
          });
