@@ -88,9 +88,6 @@ describe("The menu", function() {
           * clicked and does it hide when clicked again.
           */
 
-        //   it("menu opens on click", function(){
-        //
-        //   })
           it(" is displayed when clicked and hides when clicked again", function(){
               if(!$('body').hasClass('menu-hidden')){
                   $('.menu-icon-link').click();
